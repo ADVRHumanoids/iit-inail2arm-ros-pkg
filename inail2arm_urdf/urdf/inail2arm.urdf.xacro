@@ -2,9 +2,11 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="inail2arm">
 
 
+    <xacro:include filename="$(find inail2arm_urdf)/config/inail2arm.urdf.xacro" />
     <xacro:include filename="$(find inail2arm_urdf)/urdf/conversions.urdf.xacro" />
     <xacro:include filename="$(find inail2arm_urdf)/urdf/materials.urdf.xacro" />
     <xacro:include filename="$(find inail2arm_urdf)/urdf/inail2arm_macro.urdf.xacro" />
+    <xacro:include filename="$(find inail2arm_urdf)/urdf/inail2arm_ee_macro.urdf.xacro" />
     <xacro:include filename="$(find inail2arm_urdf)/urdf/inail2base.urdf.xacro" />
     <xacro:include filename="$(find inail2arm_urdf)/urdf/kinematics_properties.urdf.xacro" />
     <xacro:include filename="$(find inail2arm_urdf)/urdf/inertial_properties.urdf.xacro" />
@@ -19,6 +21,10 @@
     <xacro:inail2_arm arm_num="1"  rot="1"  parent="base_link">
       <origin xyz="0 0 0" rpy="0 0 0"/>
     </xacro:inail2_arm>
+    
+    <!--- END EFFECTOR  -->
+    <xacro:inail2_arm_ee arm_num="1"  parent="arm1_6">
+    </xacro:inail2_arm_ee>
    
   
 </robot>

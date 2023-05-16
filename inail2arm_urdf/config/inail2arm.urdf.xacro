@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="centauro">
+
+<xacro:property name="model_name" value="inail2arm" />
+<xacro:property name="model_version" value="0.1" />
+
+<xacro:arg name="end_effector" default="dagana_fixed"/> <!-- none, ball, dagana_fixed, dagana -->
+<xacro:property name="END_EFFECTOR" value="$(arg end_effector)" />
+
+<!-- HACK to add standalone dagana plugin and ignore the dagana joint in the libxbot2_gz_joint_server -->
+<!-- This property is used in the gazebo/xbot.gazebo.xacro file -->
+<!-- In future, xbot will be able to ignore end-effectors in the hal and this should not be neccesary anymore -->
+<xacro:property name="DAGANA_STANDALONE_PLUGIN" value="true" />
+
+</robot>

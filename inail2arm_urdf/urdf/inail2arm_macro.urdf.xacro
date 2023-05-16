@@ -181,9 +181,6 @@
 
       </link>
 
-
-      <link name="tcp_${arm_num}" />
-
       <!--wrist-pitch -->
       <!-- /LINKS -->
 
@@ -261,13 +258,7 @@
       </joint>
       <!-- /wrist2 pitch-->
 
-      <!-- virtual tip pitch-->
-      <joint name="j_tcp_${arm_num}" type="fixed">
-         <parent link="arm${arm_num}_6" />
-         <child link="tcp_${arm_num}" />
-         <origin xyz="0.0 0.0 0" />
-      </joint>
-      <!-- virtual tip pitch-->
+
 
    </xacro:macro>
    <!-- /macro arms -->
