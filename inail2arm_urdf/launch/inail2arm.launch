@@ -5,6 +5,8 @@
 
 
     <param name="robot_description" command="$(find xacro)/xacro '$(find inail2arm_urdf)/urdf/inail2arm.urdf.xacro'" />
+    <param name="robot_description_semantic" command="$(find xacro)/xacro '$(find inail2arm_srdf)/srdf/inail2arm.srdf.xacro'" />
+    
     <param name="use_gui" value="$(arg gui)"/>
     <param name="rate" value="50.0"/>
      

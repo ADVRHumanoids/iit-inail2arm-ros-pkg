@@ -1,0 +1,28 @@
+solver_options:
+    regularization: 1e-4
+    back_end: qpoases
+
+stack:
+    - ["Arm"]
+
+    
+constraints: ["JointLimits", "VelocityLimits"]
+
+Arm:
+    type: Cartesian
+    name: arm_control
+    distal_link: arm1_6
+    base_link: base_link
+    lambda: 0.1
+
+Postural:
+    type: Postural
+    lambda: 0.01
+    weight: 0.001
+    
+JointLimits:
+    type: JointLimits
+
+
+VelocityLimits:
+    type: VelocityLimits

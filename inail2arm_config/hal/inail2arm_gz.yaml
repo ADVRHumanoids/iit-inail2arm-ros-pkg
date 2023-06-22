@@ -1,0 +1,12 @@
+xbotcore_devices:
+
+    joint_gz:
+        names: [j_arm1_1, j_arm1_2, j_arm1_3,
+                j_arm1_4, j_arm1_5, j_arm1_6]
+        thread: rt_main
+
+    joint_master:
+        master: true  # this is a master device for 'joint'
+        thread: rt_main
+
+

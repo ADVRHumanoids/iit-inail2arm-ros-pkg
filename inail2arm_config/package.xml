@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>inail2arm_config</name>
+  <version>0.0.0</version>
+  <description>The inail2arm_config package</description>
+  <maintainer email="davide.torielli@iit.it">Tori</maintainer>
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+  </export>
+</package>
