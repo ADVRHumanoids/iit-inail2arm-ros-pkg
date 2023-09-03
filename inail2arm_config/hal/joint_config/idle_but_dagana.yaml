@@ -1,0 +1,42 @@
+defines:
+  - &upper_body_ctrl idle
+  - &pos_gains [300.0, 0.0, 30.0]
+  - &imp_gain_mid [500.0, 30.0, 1.0, 0.003, 0.95]
+  - &imp_gain_sm [100.0, 20.0, 1.0, 0.003, 0.95]
+
+
+j_arm1_1:
+  control_mode: *upper_body_ctrl
+  pid :
+    position: *pos_gains
+    impedance:  *imp_gain_mid
+
+j_arm1_2:
+  control_mode: *upper_body_ctrl
+  pid :
+    position: *pos_gains
+    impedance:  *imp_gain_mid
+
+j_arm1_3:
+  control_mode: *upper_body_ctrl
+  pid :
+    position: *pos_gains
+    impedance:  *imp_gain_mid
+
+j_arm1_4:
+  control_mode: *upper_body_ctrl
+  pid :
+    position: *pos_gains
+    impedance:  *imp_gain_mid
+
+j_arm1_5:
+  control_mode: *upper_body_ctrl
+  pid :
+    position: *pos_gains
+    impedance:  *imp_gain_mid
+
+j_arm1_6:
+  control_mode: *upper_body_ctrl
+  pid :
+    position: *pos_gains
+    impedance:  *imp_gain_mid
