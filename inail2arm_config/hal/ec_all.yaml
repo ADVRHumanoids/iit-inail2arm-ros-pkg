@@ -1,15 +1,15 @@
 xbotcore_devices:
 
-  joint_gripper_adapter:
-      names: [dagana_1]
-      thread: rt_main
-      params:
-        dagana_1/joint_name: {value: dagana_1_claw_joint, type: string}
-        dagana_1/joint_type: {value: joint_ec, type: string}
-        dagana_1/qopen: {value: 1.18, type: double} # 1.18 considering the offset in ecat_config.yaml
-        dagana_1/qclosed: {value: 0.040, type: double} # considering the offset in ecat_config.yaml
-        dagana_1/vmax: {value: 1.0, type: double}
-        dagana_1/stiffness: {value: 50.0, type: double}
+#   joint_gripper_adapter:
+#       names: [dagana_1]
+#       thread: rt_main
+#       params:
+#         dagana_1/joint_name: {value: dagana_1_claw_joint, type: string}
+#         dagana_1/joint_type: {value: joint_ec, type: string}
+#         dagana_1/qopen: {value: 1.18, type: double} # 1.18 considering the offset in ecat_config.yaml
+#         dagana_1/qclosed: {value: 0.040, type: double} # considering the offset in ecat_config.yaml
+#         dagana_1/vmax: {value: 1.0, type: double}
+#         dagana_1/stiffness: {value: 50.0, type: double}
 
   joint_ec:
     names: []

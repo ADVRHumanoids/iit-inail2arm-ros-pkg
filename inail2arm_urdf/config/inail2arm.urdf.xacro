@@ -10,7 +10,7 @@
 <!-- HACK to add standalone dagana plugin and ignore the dagana joint in the libxbot2_gz_joint_server -->
 <!-- This property is used in the gazebo/xbot.gazebo.xacro file -->
 <!-- In future, xbot will be able to ignore end-effectors in the hal and this should not be neccesary anymore -->
-<xacro:property name="DAGANA_STANDALONE_PLUGIN" value="true" />
+<xacro:property name="DAGANA_STANDALONE_PLUGIN" value="false" />
 
 <xacro:arg name="proximity_sensors" default="true"/>
 <xacro:property name="PROXIMITY_SENSORS" value="$(arg proximity_sensors)" />
