@@ -1,0 +1,57 @@
+xbotcore_devices:
+
+  joint_gripper_adapter:
+      names: [dagana_1]
+      thread: rt_main
+      params:
+        dagana_1/joint_name: {value: dagana_1_claw_joint, type: string}
+        dagana_1/joint_type: {value: joint_ec, type: string}
+        dagana_1/qopen: {value: 1.18, type: double} # 1.18 considering the offset in ecat_config.yaml
+        dagana_1/qclosed: {value: 0.040, type: double} # considering the offset in ecat_config.yaml
+        dagana_1/vmax: {value: 1.0, type: double}
+        dagana_1/stiffness: {value: 50.0, type: double}
+
+  joint_ec:
+    names: []
+    thread: rt_main
+    params:
+      robot_name: &rn {value: NoNe, type: string}
+      config_ec_pos: 
+          value: $PWD/joint_config/pos3b.yaml
+          type: yamlfile
+      config_ec_imp: 
+          value: $PWD/joint_config/impd4.yaml
+          type: yamlfile
+      config_ec_idle: 
+          value: $PWD/joint_config/idle.yaml
+          type: yamlfile
+      config_ec_idle_but_dagana: 
+          value: $PWD/joint_config/idle_but_dagana.yaml
+          type: yamlfile
+      joint_id_map: &jim
+          value: $PWD/joint_map/inail2arm_joint_map.yaml
+          type: yamlfile
+      # ignore_id:
+      #     type: vector<int>
+      #     value: [301]
+  
+  # gripper_ec:
+  #   names: []
+  #   thread: rt_main
+  #   params:
+  #     robot_name: *rn
+  #     joint_id_map: *jim
+  #     name_to_id:
+  #       type: map<int>
+  #       value:
+  #         dagana_2: 301
+  #     dagana_2/range:
+  #       type: vector<double>
+  #       value: [-0.4, 0.61]
+  #     dagana_2/vmax:
+  #       type: double
+  #       value: 3.0
+
+
+    
+    
