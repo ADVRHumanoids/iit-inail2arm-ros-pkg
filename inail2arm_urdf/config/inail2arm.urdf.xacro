@@ -12,4 +12,7 @@
 <!-- In future, xbot will be able to ignore end-effectors in the hal and this should not be neccesary anymore -->
 <xacro:property name="DAGANA_STANDALONE_PLUGIN" value="true" />
 
+<xacro:arg name="proximity_sensors" default="true"/>
+<xacro:property name="PROXIMITY_SENSORS" value="$(arg proximity_sensors)" />
+
 </robot>
