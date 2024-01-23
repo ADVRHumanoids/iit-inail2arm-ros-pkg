@@ -20,8 +20,7 @@
         </xacro:if>
     </group>
     
-<!--    <group_state group="arm" name="home">-->
-    <group_state group="arm" name="home">
+    <group_state group="chains" name="home">
         <joint name="j_arm1_1" value="0.0"/>
         <joint name="j_arm1_2" value="0.45"/>
         <joint name="j_arm1_3" value="-1.6"/>
