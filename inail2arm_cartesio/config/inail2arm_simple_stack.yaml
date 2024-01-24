@@ -9,6 +9,7 @@ stack:
 constraints: [JointLimits, VelocityLimits]
 
 ArmCartesian:
+    name: "ArmCartesian"
     type: Cartesian
     distal_link: tcp_1
     base_link: base_link
