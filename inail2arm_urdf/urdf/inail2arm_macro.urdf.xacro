@@ -170,7 +170,7 @@
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
             <geometry>
                <mesh
-                  filename="package://inail2arm_urdf/meshes/mesh_wrist-roll.stl"
+                  filename="package://inail2arm_urdf/meshes/simple/mesh_wrist-roll.stl"
                   scale="0.001 ${rot*0.001} 0.001" />
             </geometry>
          </collision>
