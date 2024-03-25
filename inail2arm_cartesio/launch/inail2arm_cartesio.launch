@@ -14,7 +14,7 @@
     <arg name="namespace" default=""/> <!-- dummy argument avoids pass_all_args error in parent launch file -->
     <arg name="is_model_floating_base" default="false"/>    
     
-    <param name="cartesian/joint_blacklist" type="yaml" value="[dagana_1_claw_joint]"/>
+<!--    <param name="cartesian/joint_blacklist" type="yaml" value="[dagana_1_claw_joint]"/>-->
     
     <node pkg="cartesian_interface" type="ros_server_node" 
                                     name="ros_server_node" 

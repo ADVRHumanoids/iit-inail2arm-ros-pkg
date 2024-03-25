@@ -27,9 +27,6 @@
         <joint name="j_arm1_4" value="0.0"/>
         <joint name="j_arm1_5" value="1.1"/>
         <joint name="j_arm1_6" value="0.0"/>
-<!--        <xacro:if value="${END_EFFECTOR == 'dagana'}">
-            <joint name="dagana_1_bottom_link" value="0.0"/>
-        </xacro:if>-->
     </group_state>
     
     <!--  For moveit    -->

@@ -36,6 +36,11 @@ ArmCartesianAngular:
     active: true
     indices: [3, 4, 5]
 
+Postural:
+    type: Postural
+    lambda: 0.01
+    weight: 0.001
+
 JointLimits:
     type: JointLimits
 
