@@ -41,7 +41,7 @@ j_arm1_6:
     position: *pos_gains
     impedance:  *imp_gain_mid
 
-dagana_1_motor:
+dagana_1_claw_joint:
   control_mode: 3B_motor_pos_ctrl
   pid:
     position: [200, 0, 2]
