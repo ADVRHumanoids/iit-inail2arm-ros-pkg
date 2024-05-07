@@ -3,16 +3,17 @@ XBotInterface:
   srdf: xacro $(rospack find inail2arm_srdf)/srdf/inail2arm.srdf.xacro end_effector:=dagana
 
 ModelInterface:
-  model_type: "RBDL"
-  is_model_floating_base: "false"
+  model_type: RBDL
+  is_model_floating_base: false
+  floating_base: false
 
 # hal
 xbotcore_device_configs:
     sim: $(rospack find inail2arm_config)/hal/inail2arm_gz.yaml
     dummy: $(rospack find inail2arm_config)/hal/inail2arm_dummy.yaml
-    ec_pos: $(rospack find inail2arm_config)/hal/ec_all.yaml
-    ec_imp: $(rospack find inail2arm_config)/hal/ec_all.yaml
-    ec_idle: $(rospack find inail2arm_config)/hal/ec_all.yaml
+    ec_pos: ~/concert_ws/src/Inail2armConfig/hal/ec_all.yaml
+    ec_imp: ~/concert_ws/src/Inail2armConfig/hal/ec_all.yaml
+    ec_idle: ~/concert_ws/src/Inail2armConfig/hal/ec_all.yaml
 
 # threads
 xbotcore_threads:

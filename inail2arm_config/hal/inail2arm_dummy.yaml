@@ -14,7 +14,7 @@ xbotcore_devices:
         params:
             dagana_1/joint_name: {value: dagana_1_claw_joint, type: string}
             dagana_1/joint_type: {value: joint_dummy, type: string}
-            dagana_1/qopen: {value: 1.0, type: double}
-            dagana_1/qclosed: {value: 0.0, type: double}
-            dagana_1/vmax: {value: 1.0, type: double}
-            dagana_1/stiffness: {value: 10.0, type: double}
+            dagana_1/qopen: {value: 1.23, type: double}
+            dagana_1/qclosed: {value: 0.06, type: double}
+            dagana_1/vmax: {value: 10.0, type: double}
+            dagana_1/stiffness: {value: 50.0, type: double}
