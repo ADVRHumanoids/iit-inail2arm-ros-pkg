@@ -56,7 +56,7 @@
 <xacro:property name="EE_mount_Oz" value=" 0.03475 "/>
 <xacro:property name="EE_mount_roll" value=" 0.0 "/>
 <xacro:property name="EE_mount_pitch" value=" 0.0 "/>
-<xacro:property name="EE_mount_yaw" value=" 0.0 "/>
+<xacro:property name="EE_mount_yaw" value=" ${PI/2} "/>
 
 <!-- Origin -->
 <xacro:property name="No_end_ft_Ox" value=" 0.0 "/>
