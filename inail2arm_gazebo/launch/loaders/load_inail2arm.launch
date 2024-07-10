@@ -9,6 +9,8 @@
     <arg name="pose_yaw" default="0" />
     <arg name="waitFor" default="" doc="Name of another model to wait. Option to wait for another model to be spawned first (eg a table on which the arm must stay on)" />
     <arg name="pub_world_tf" default="false" />
+    <arg name="end_effector" default="none" />   
+    <arg name="nicla" default="false" />
     
     <arg name="xacroArm" value="$(find inail2arm_urdf)/urdf/inail2arm_robot.urdf.xacro
          x:=$(arg pose_x)
@@ -17,6 +19,8 @@
          roll:=$(arg pose_roll)
          pitch:=$(arg pose_pitch)
          yaw:=$(arg pose_yaw)
+         end_effector:=$(arg end_effector)
+         nicla:=$(arg nicla)
          "
     />
     <param name="gazebo/robot_description" command="$(find xacro)/xacro $(arg xacroArm)" />
