@@ -3,30 +3,8 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
 <gazebo>
-            
-    <xacro:if value="${END_EFFECTOR == 'dagana'}">
-    <xacro:if value="${DAGANA_STANDALONE_PLUGIN}">
-        <plugin filename="libdagana_gazebo_DaganaPlugin.so" name="dagana_plugin">
-            <gripperName>dagana_1</gripperName>
-            <jointName>dagana_1_claw_joint</jointName>
-            <rate>100</rate>
-            <p>1</p>
-            <i>0.1</i>
-            <d>0.01</d>
-            <cmdMax>1000</cmdMax>
-            <cmdMin>-1000</cmdMin>
-        </plugin>
-    </xacro:if>
-    </xacro:if>
     
     <plugin name="xbot2_joint_driver" filename="libxbot2_gz_joint_server.so">
-        <xacro:if value="${END_EFFECTOR == 'dagana'}">
-        <xacro:if value="${DAGANA_STANDALONE_PLUGIN}">
-        <ignore_joints>
-            <joint name="dagana_1_claw_joint" />
-        </ignore_joints> 
-        </xacro:if>
-        </xacro:if>
         <pid>
             <gain name="lowpwr_mot" p="50"  d="5"/>
             <gain name="small_mot"  p="600"  d="6"/>
@@ -34,10 +12,10 @@
             <gain name="big_mot"    p="8000" d="50"/>
             <gain name="dagana_mot"  p="10" d="0.5"/>
 
-            <pid name="j_arm1_1" profile="small_mot"/>
-            <pid name="j_arm1_2" profile="small_mot"/>
-            <pid name="j_arm1_3" profile="small_mot"/>
-            <pid name="j_arm1_4" profile="small_mot"/>
+            <pid name="j_arm1_1" profile="medium_mot"/>
+            <pid name="j_arm1_2" profile="medium_mot"/>
+            <pid name="j_arm1_3" profile="medium_mot"/>
+            <pid name="j_arm1_4" profile="medium_mot"/>
             <pid name="j_arm1_5" profile="small_mot"/>
             <pid name="j_arm1_6" profile="small_mot"/>
             <pid name="dagana_1_claw_joint" profile="dagana_mot"/>
