@@ -4,6 +4,7 @@ solver_options:
 
 stack:
     - [ArmCartesian]
+    - [ArmPostural]
 
     
 constraints: [JointLimits, VelocityLimits]
@@ -36,10 +37,12 @@ ArmCartesianAngular:
     active: true
     indices: [3, 4, 5]
 
-Postural:
+ArmPostural:
+    name: "ArmPostural"
     type: Postural
     lambda: 0.01
     weight: 0.001
+    active: false
 
 JointLimits:
     type: JointLimits
