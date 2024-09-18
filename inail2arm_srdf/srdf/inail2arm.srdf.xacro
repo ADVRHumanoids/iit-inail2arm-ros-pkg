@@ -66,6 +66,10 @@
         <disable_collisions link1="arm1_6" link2="dagana_1_bottom_link" reason="Never"/>
         <disable_collisions link1="arm1_6" link2="dagana_1_top_link" reason="Adjacent"/>
         <disable_collisions link1="dagana_1_bottom_link" link2="dagana_1_top_link" reason="Adjacent"/>
+        <xacro:if value="${NICLA}">
+            <disable_collisions link1="dagana_1_bottom_link" link2="nicla_base" reason="Adjacent"/>
+            <disable_collisions link1="dagana_1_top_link" link2="nicla_base" reason="Adjacent"/>
+        </xacro:if>
     </xacro:if>
 
 </robot>

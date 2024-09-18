@@ -7,6 +7,9 @@
 <xacro:arg name="end_effector" default="none"/> <!-- none, ball, dagana_fixed, dagana -->
 <xacro:property name="END_EFFECTOR" value="$(arg end_effector)" />
 
+<xacro:arg name="nicla" default="false"/> <!-- the nicla inside the dagana-->
+<xacro:property name="NICLA" value="$(arg nicla)" />
+
 <xacro:arg name="proximity_sensors" default="false"/>
 <xacro:property name="PROXIMITY_SENSORS" value="$(arg proximity_sensors)" />
 
