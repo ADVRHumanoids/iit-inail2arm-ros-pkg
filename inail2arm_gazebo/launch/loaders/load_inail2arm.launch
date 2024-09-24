@@ -21,6 +21,7 @@
          yaw:=$(arg pose_yaw)
          end_effector:=$(arg end_effector)
          nicla:=$(arg nicla)
+         gazebo_urdf:=true
          "
     />
     <param name="gazebo/robot_description" command="$(find xacro)/xacro $(arg xacroArm)" />
