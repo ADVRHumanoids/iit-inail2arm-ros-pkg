@@ -1,10 +1,9 @@
 <?xml version="1.0"?>
 <launch>
 
-    <param name="cartesian/problem_description" textfile="$(find inail2arm_cartesio)/config/inail2arm_simple_stack.yaml"/>
-    
     <arg name="ci_rviz" default="false" />
     <arg name="solver" default="OpenSot"/>
+    <arg name="problem_description_file" default="$(find inail2arm_cartesio)/config/inail2arm_simple_stack.yaml"/>
     <arg name="gdb" default="false" />
     <arg if="$(arg gdb)" name="prefix" value="gdb -ex run --arg"/>
     <arg unless="$(arg gdb)" name="prefix" value=""/>
@@ -15,7 +14,8 @@
     <arg name="is_model_floating_base" default="false"/>    
     
     <param name="cartesian/joint_blacklist" type="yaml" value="[dagana_1_claw_joint]"/>
-    
+    <param name="cartesian/problem_description" textfile="$(arg problem_description_file)"/>
+
     <node pkg="cartesian_interface" type="ros_server_node" 
                                     name="ros_server_node" 
                                     required="true" 
