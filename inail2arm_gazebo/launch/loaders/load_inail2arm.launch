@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="pose_x" default="0" />
+    <arg name="pose_y" default="0" />
+    <arg name="pose_z" default="0" />
+    <arg name="pose_roll" default="0" />
+    <arg name="pose_pitch" default="0" />
+    <arg name="pose_yaw" default="0" />
+    <arg name="waitFor" default="" doc="Name of another model to wait. Option to wait for another model to be spawned first (eg a table on which the arm must stay on)" />
+    <arg name="pub_world_tf" default="false" />
+    <arg name="end_effector" default="none" />   
+    <arg name="nicla" default="false" />
+    
+    <arg name="xacroArm" value="$(find inail2arm_urdf)/urdf/inail2arm_robot.urdf.xacro
+         x:=$(arg pose_x)
+         y:=$(arg pose_y)
+         z:=$(arg pose_z)
+         roll:=$(arg pose_roll)
+         pitch:=$(arg pose_pitch)
+         yaw:=$(arg pose_yaw)
+         end_effector:=$(arg end_effector)
+         nicla:=$(arg nicla)
+         gazebo_urdf:=true
+         "
+    />
+    <param name="gazebo/robot_description" command="$(find xacro)/xacro $(arg xacroArm)" />
+
+    <node if="$(eval waitFor == '')" name="urdf_spawner_inail2arm" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+          args="-urdf -model inail2arm -param gazebo/robot_description"/>
+    <node unless="$(eval waitFor == '')" name="urdf_spawner_inail2arm" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+          args="-urdf -model inail2arm -param gazebo/robot_description -wait $(arg waitFor)"/>
+    
+    <node if="$(arg pub_world_tf)" pkg="tf2_ros" type="static_transform_publisher" name="inail2arm_world_to_base_tf" args="$(arg pose_x) $(arg pose_y) $(arg pose_z) $(arg pose_yaw) $(arg pose_pitch) $(arg pose_roll) world base_link"/>
+    
+</launch>
+

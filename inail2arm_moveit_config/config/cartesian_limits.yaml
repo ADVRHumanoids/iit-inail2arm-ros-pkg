@@ -1,0 +1,8 @@
+#Nope, that cartesian_limits.yaml is for velocities and accelerations and it's only used for the Pilz motion planner.
+## https://answers.ros.org/question/403542/set-cartesian-limits-with-moveit/
+
+cartesian_limits:
+  max_trans_vel: 1
+  max_trans_acc: 2.25
+  max_trans_dec: -5
+  max_rot_vel: 1.57

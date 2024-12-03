@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: inail2arm_urdf
+    relative_path: urdf/inail2arm_robot.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/inail2arm.srdf
+  CONFIG:
+    author_name: tori
+    author_email: davide.torielli@iit.it
+    generated_timestamp: 1684491426

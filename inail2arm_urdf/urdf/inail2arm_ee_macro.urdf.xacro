@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <!-- macro ee -->
+    <xacro:macro name="inail2_arm_ee" params="arm_num parent ">
+
+    <xacro:if value="${END_EFFECTOR == 'none'}">
+        <link name="tcp_${arm_num}" />
+        <!-- virtual tip pitch-->
+        <joint name="j_tcp_${arm_num}" type="fixed">
+            <parent link="${parent}" />
+            <child link="tcp_${arm_num}" />
+            <origin xyz="${EE_mount_Ox} ${EE_mount_Oy} ${EE_mount_Oz}" rpy="${EE_mount_roll} ${EE_mount_pitch} ${EE_mount_yaw}"/>
+        </joint>
+        <!-- virtual tip pitch-->
+    </xacro:if>
+
+    <xacro:if value="${END_EFFECTOR == 'ball'}">
+        <xacro:include filename="$(find inail2arm_urdf)/urdf/ball.urdf.xacro" />
+
+        <xacro:ball_end_effector arm_num="1" parent_link="${parent}">
+            <origin xyz="${EE_mount_Ox} ${EE_mount_Oy} ${EE_mount_Oz}" rpy="${EE_mount_roll} ${EE_mount_pitch} ${EE_mount_yaw}"/>
+        </xacro:ball_end_effector>
+        
+        <!--     to have the same final link as when "none" option is used     -->
+        <link name="tcp_${arm_num}" />
+        <joint name="j_tcp_${arm_num}" type="fixed">
+            <parent link="ball${arm_num}_tip" />
+            <child link="tcp_${arm_num}" />
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </joint>
+
+    </xacro:if>
+
+    <xacro:if value="${END_EFFECTOR == 'dagana_fixed'}">
+        <xacro:include filename="$(find dagana_urdf)/urdf/dagana_macro.urdf.xacro" />
+
+        <xacro:dagana_gripper name="dagana_${arm_num}" parent_link="${parent}" joint_type="fixed">
+            <origin xyz="${EE_mount_Ox} ${EE_mount_Oy} ${EE_mount_Oz}" rpy="${EE_mount_roll} ${EE_mount_pitch} ${EE_mount_yaw}"/>
+        </xacro:dagana_gripper>
+        
+        <!--     to have the same final link as when "none" option is used     -->
+        <link name="tcp_${arm_num}" />
+        <joint name="j_tcp_${arm_num}" type="fixed">
+            <parent link="dagana_${arm_num}_tcp" />
+            <child link="tcp_${arm_num}" />
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </joint>
+        
+    </xacro:if>
+
+
+    <xacro:if value="${END_EFFECTOR == 'dagana'}">
+        <xacro:include filename="$(find dagana_urdf)/urdf/dagana_macro.urdf.xacro" />
+
+        <xacro:dagana_gripper name="dagana_${arm_num}" parent_link="${parent}" joint_type="revolute">
+            <origin xyz="${EE_mount_Ox} ${EE_mount_Oy} ${EE_mount_Oz}" rpy="${EE_mount_roll} ${EE_mount_pitch} ${EE_mount_yaw}"/>
+        </xacro:dagana_gripper>
+        
+        <!--     to have the same final link as when "none" option is used     -->
+        <link name="tcp_${arm_num}" />
+        <joint name="j_tcp_${arm_num}" type="fixed">
+            <parent link="dagana_${arm_num}_tcp" />
+            <child link="tcp_${arm_num}" />
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </joint>
+    </xacro:if>
+     
+    </xacro:macro>
+    <!-- /macro ee -->
+
+</robot>

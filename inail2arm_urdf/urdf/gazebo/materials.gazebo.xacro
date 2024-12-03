@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!-- **** gazebo materials **** --> 
+<gazebo reference="arm1_1">
+  <material>Gazebo/Blue</material>
+</gazebo>
+<gazebo reference="arm1_2">
+  <material>Gazebo/DarkGrey</material>
+</gazebo>
+<gazebo reference="arm1_3">
+  <material>Gazebo/Blue</material>
+</gazebo>
+<gazebo reference="arm1_4">
+  <material>Gazebo/Blue</material>
+</gazebo>
+<gazebo reference="arm1_5">
+  <material>Gazebo/Blue</material>
+</gazebo>
+<gazebo reference="arm1_6">
+  <material>Gazebo/Blue</material>
+</gazebo>
+
+<xacro:if value="${END_EFFECTOR == 'ball'}">
+	<gazebo reference="ball1">
+		<material>Gazebo/BlackTransparent</material>
+	</gazebo>
+</xacro:if>
+
+</robot>

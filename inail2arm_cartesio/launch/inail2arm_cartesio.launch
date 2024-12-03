@@ -1,18 +1,21 @@
+<?xml version="1.0"?>
 <launch>
 
-    <param name="robot_description" command="$(find xacro)/xacro '$(find inail2arm_urdf)/urdf/inail2arm.urdf.xacro'" />
-    <param name="robot_description_semantic" command="$(find xacro)/xacro '$(find inail2arm_srdf)/srdf/inail2arm.srdf.xacro'" />
-    <param name="cartesian/problem_description" textfile="$(find inail2arm_cartesio)/config/inail2arm_simple_stack.yaml"/>
-    
-    <arg name="gui" default="false" />
+    <arg name="ci_rviz" default="false" />
     <arg name="solver" default="OpenSot"/>
-    <arg name="prefix" default=""/>
+    <arg name="problem_description_file" default="$(find inail2arm_cartesio)/config/inail2arm_simple_stack.yaml"/>
+    <arg name="gdb" default="false" />
+    <arg if="$(arg gdb)" name="prefix" value="gdb -ex run --arg"/>
+    <arg unless="$(arg gdb)" name="prefix" value=""/>
     <arg name="rate" default="100.0"/>
     <arg name="tf_prefix" default="ci"/>
-    <arg name="markers" default="true"/>
+    <arg name="markers" default="false"/>
     <arg name="namespace" default=""/> <!-- dummy argument avoids pass_all_args error in parent launch file -->
     <arg name="is_model_floating_base" default="false"/>    
     
+    <param name="cartesian/joint_blacklist" type="yaml" value="[dagana_1_claw_joint]"/>
+    <param name="cartesian/problem_description" textfile="$(arg problem_description_file)"/>
+
     <node pkg="cartesian_interface" type="ros_server_node" 
                                     name="ros_server_node" 
                                     required="true" 
@@ -24,6 +27,11 @@
         <param name="solver" value="$(arg solver)"/>
         <param name="rate" value="$(arg rate)"/>
         <param name="tf_prefix" value="$(arg tf_prefix)"/>
+        <param name="world_frame_link" value="world"/>
+
+        
+        <remap from="robot_description" to="xbotcore/robot_description" />
+        <remap from="robot_description_semantic" to="xbotcore/robot_description_semantic" />
         
     </node>
 
@@ -31,9 +39,6 @@
         <param name="tf_prefix" value="$(arg tf_prefix)"/>
     </node>
 
-    <node pkg="tf" type="static_transform_publisher" name="base_link_static_transform" args="0 0 0 0 0 0 base_link ci/world_odom 100" />
-
-    <node pkg="rviz" type="rviz" name="rviz" output="screen" if="$(arg gui)" args="-d $(find inail2arm_cartesio)/config/inail2arm_cartesio.rviz">
+    <node if="$(arg ci_rviz)" pkg="rviz" type="rviz" name="rviz_ci" output="screen" args="-d $(find inail2arm_cartesio)/config/inail2arm_cartesio.rviz">
     </node> 
-
 </launch>

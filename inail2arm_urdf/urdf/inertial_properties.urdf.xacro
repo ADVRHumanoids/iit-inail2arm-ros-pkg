@@ -93,18 +93,18 @@
 <xacro:property name="Wrist_1_mass" value=" 1.0418416 "/>
 
 <!-- Center of Mass -->
-<xacro:property name="Wrist_2_x" value="0 "/>
-<xacro:property name="Wrist_2_y" value="0 "/> 
-<xacro:property name="Wrist_2_z" value="0 "/>
+<xacro:property name="Wrist_2_x" value="${-9.9908245e-01*mmTom}"/>
+<xacro:property name="Wrist_2_y" value="${1.0236*mmTom} "/> 
+<xacro:property name="Wrist_2_z" value="${1.7236136e+01*mmTom} "/>
 <!-- Inertia -->
-<xacro:property name="Wrist_2_xx" value="0.0001 "/>
-<xacro:property name="Wrist_2_yy" value="0.0001 "/>
-<xacro:property name="Wrist_2_zz" value="0.0001 "/>
-<xacro:property name="Wrist_2_xy" value="0 "/> 
-<xacro:property name="Wrist_2_xz" value="0"/>
-<xacro:property name="Wrist_2_yz" value="0"/> 
+<xacro:property name="Wrist_2_xx" value="${1.5215801e+02*mm2Tom2}"/>
+<xacro:property name="Wrist_2_yy" value="${1.5336095e+02*mm2Tom2} "/>
+<xacro:property name="Wrist_2_zz" value="${2.6680853e+02*mm2Tom2} "/>
+<xacro:property name="Wrist_2_xy" value="${5.6840238*mm2Tom2} "/> 
+<xacro:property name="Wrist_2_xz" value="${-1.6110539*mm2Tom2}"/>
+<xacro:property name="Wrist_2_yz" value="${1.4745762*mm2Tom2}"/> 
 <!-- Mass -->
-<xacro:property name="Wrist_2_mass" value="0.001 "/>
+<xacro:property name="Wrist_2_mass" value="0.20700511"/>
 
 
 </robot>

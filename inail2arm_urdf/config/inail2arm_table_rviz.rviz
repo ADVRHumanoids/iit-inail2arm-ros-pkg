@@ -1,0 +1,396 @@
+Panels:
+  - Class: rviz/Displays
+    Help Height: 0
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /Global Options1
+        - /Inail2Arm1
+        - /TF1/Frames1
+      Splitter Ratio: 0.5
+    Tree Height: 922
+  - Class: rviz/Selection
+    Name: Selection
+  - Class: rviz/Tool Properties
+    Expanded:
+      - /2D Pose Estimate1
+      - /2D Nav Goal1
+      - /Publish Point1
+    Name: Tool Properties
+    Splitter Ratio: 0.5886790156364441
+  - Class: rviz/Views
+    Expanded:
+      - /Current View1
+    Name: Views
+    Splitter Ratio: 0.5
+  - Class: rviz/Time
+    Name: Time
+    SyncMode: 0
+    SyncSource: ""
+  - Class: rviz_visual_tools/RvizVisualToolsGui
+    Name: RvizVisualToolsGui
+  - Class: rviz_visual_tools/RvizVisualToolsGui
+    Name: RvizVisualToolsGui
+  - Class: tf_visual_tools/TFVisualTools
+    Name: TFVisualTools
+  - Class: tf_visual_tools/TFVisualTools
+    Name: TFVisualTools
+Preferences:
+  PromptSaveOnExit: true
+Toolbars:
+  toolButtonStyle: 2
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Alpha: 0.5
+      Cell Size: 1
+      Class: rviz/Grid
+      Color: 160; 160; 164
+      Enabled: true
+      Line Style:
+        Line Width: 0.029999999329447746
+        Value: Lines
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 10
+      Reference Frame: <Fixed Frame>
+      Value: true
+    - Alpha: 0.5
+      Class: rviz/RobotModel
+      Collision Enabled: false
+      Enabled: true
+      Links:
+        All Links Enabled: true
+        Expand Joint Details: false
+        Expand Link Details: false
+        Expand Tree: false
+        Link Tree Style: Links in Alphabetic Order
+        arm1_1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        arm1_2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        arm1_3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        arm1_4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        arm1_5:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        arm1_6:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        screw_bottom_left:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        screw_bottom_right:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        screw_top_left:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        screw_top_right:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        tcp_1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        teraflex_1_sensor1_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        teraflex_1_sensor2_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        teraflex_1_sensor3_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        teraflex_1_sensor4_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        teraflex_1_sensor5_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        teraflex_1_sensor6_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+      Name: Inail2Arm
+      Robot Description: xbotcore/robot_description
+      TF Prefix: ""
+      Update Interval: 0
+      Value: true
+      Visual Enabled: true
+    - Alpha: 1
+      Class: rviz/RobotModel
+      Collision Enabled: false
+      Enabled: true
+      Links:
+        All Links Enabled: true
+        Expand Joint Details: false
+        Expand Link Details: false
+        Expand Tree: false
+        Link Tree Style: Links in Alphabetic Order
+        back_left_leg:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        back_right_leg:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        front_left_leg:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        front_right_leg:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        surface:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        surface_top:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        table_base_footprint:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+      Name: Table
+      Robot Description: /gazebo/table_description
+      TF Prefix: ""
+      Update Interval: 0
+      Value: true
+      Visual Enabled: true
+    - Class: rviz/InteractiveMarkers
+      Enable Transparency: true
+      Enabled: true
+      Name: InteractiveMarkers
+      Show Axes: false
+      Show Descriptions: true
+      Show Visual Aids: false
+      Update Topic: /tf_visual_tools_imarkers/update
+      Value: true
+    - Class: rviz/TF
+      Enabled: true
+      Filter (blacklist): ""
+      Filter (whitelist): ""
+      Frame Timeout: 15
+      Frames:
+        All Enabled: false
+        arm1_1:
+          Value: false
+        arm1_2:
+          Value: false
+        arm1_3:
+          Value: false
+        arm1_4:
+          Value: false
+        arm1_5:
+          Value: false
+        arm1_6:
+          Value: true
+        back_left_leg:
+          Value: false
+        back_right_leg:
+          Value: false
+        base_link:
+          Value: true
+        front_left_leg:
+          Value: false
+        front_right_leg:
+          Value: false
+        screw_bottom_left:
+          Value: true
+        screw_bottom_right:
+          Value: true
+        screw_top_left:
+          Value: true
+        screw_top_right:
+          Value: true
+        surface:
+          Value: false
+        surface_top:
+          Value: true
+        table_base_footprint:
+          Value: true
+        tcp_1:
+          Value: false
+        teraflex_1_sensor1_link:
+          Value: false
+        teraflex_1_sensor2_link:
+          Value: false
+        teraflex_1_sensor3_link:
+          Value: false
+        teraflex_1_sensor4_link:
+          Value: false
+        teraflex_1_sensor5_link:
+          Value: false
+        teraflex_1_sensor6_link:
+          Value: false
+        world:
+          Value: false
+      Marker Alpha: 1
+      Marker Scale: 0.4000000059604645
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        world:
+          base_link:
+            arm1_1:
+              arm1_2:
+                arm1_3:
+                  arm1_4:
+                    arm1_5:
+                      arm1_6:
+                        tcp_1:
+                          {}
+                    teraflex_1_sensor1_link:
+                      {}
+                    teraflex_1_sensor2_link:
+                      {}
+                    teraflex_1_sensor3_link:
+                      {}
+                    teraflex_1_sensor4_link:
+                      {}
+                    teraflex_1_sensor5_link:
+                      {}
+                    teraflex_1_sensor6_link:
+                      {}
+            screw_bottom_left:
+              {}
+            screw_bottom_right:
+              {}
+            screw_top_left:
+              {}
+            screw_top_right:
+              {}
+          surface:
+            back_left_leg:
+              {}
+            back_right_leg:
+              {}
+            front_left_leg:
+              {}
+            front_right_leg:
+              {}
+            surface_top:
+              {}
+            table_base_footprint:
+              {}
+      Update Interval: 0
+      Value: true
+  Enabled: true
+  Global Options:
+    Background Color: 48; 48; 48
+    Default Light: true
+    Fixed Frame: world
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz/Interact
+      Hide Inactive Objects: true
+    - Class: rviz/MoveCamera
+    - Class: rviz/Select
+    - Class: rviz/FocusCamera
+    - Class: rviz/Measure
+    - Class: rviz/SetInitialPose
+      Theta std deviation: 0.2617993950843811
+      Topic: /initialpose
+      X std deviation: 0.5
+      Y std deviation: 0.5
+    - Class: rviz/SetGoal
+      Topic: /move_base_simple/goal
+    - Class: rviz/PublishPoint
+      Single click: true
+      Topic: /clicked_point
+  Value: true
+  Views:
+    Current:
+      Class: rviz/Orbit
+      Distance: 3.706228256225586
+      Enable Stereo Rendering:
+        Stereo Eye Separation: 0.05999999865889549
+        Stereo Focal Distance: 1
+        Swap Stereo Eyes: false
+        Value: false
+      Field of View: 0.7853981852531433
+      Focal Point:
+        X: -0.20687969028949738
+        Y: -0.38078534603118896
+        Z: 0.8031347393989563
+      Focal Shape Fixed Size: true
+      Focal Shape Size: 0.05000000074505806
+      Invert Z Axis: false
+      Name: Current View
+      Near Clip Distance: 0.009999999776482582
+      Pitch: 0.37979862093925476
+      Target Frame: <Fixed Frame>
+      Yaw: 3.1013147830963135
+    Saved: ~
+Window Geometry:
+  Displays:
+    collapsed: false
+  Height: 1136
+  Hide Left Dock: false
+  Hide Right Dock: false
+  QMainWindow State: 000000ff00000000fd00000004000000000000022d000003d7fc0200000012fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d000003d7000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb000000280020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000000000000000fb00000024005200760069007a00560069007300750061006c0054006f006f006c007300470075006900000002150000008d0000004100fffffffb00000024005200760069007a00560069007300750061006c0054006f006f006c007300470075006900000001f2000000e40000004100fffffffb0000001a0054004600560069007300750061006c0054006f006f006c0073000000027b000001940000006e00fffffffb000000280020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000000000000000fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e006700000001e50000022f0000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000000000000000fb000000280020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000000000000000fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067010000028c0000018800000000000000000000000100000149000003d7fc0200000004fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067010000003d000002800000000000000000fc0000003d000003d7000000a400fffffffa000000010100000002fb0000001a0054004600560069007300750061006c0054006f006f006c00730000000000ffffffff0000009200fffffffb0000000a0056006900650077007301000004a4000001000000010000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e100000197000000030000078000000039fc0100000002fb0000000800540069006d0065010000000000000780000003bc00fffffffb0000000800540069006d00650100000000000004500000000000000000000003fe000003d700000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  RvizVisualToolsGui:
+    collapsed: false
+  Selection:
+    collapsed: false
+  TFVisualTools:
+    collapsed: false
+  Time:
+    collapsed: false
+  Tool Properties:
+    collapsed: false
+  Views:
+    collapsed: false
+  Width: 1920
+  X: 1920
+  Y: 27

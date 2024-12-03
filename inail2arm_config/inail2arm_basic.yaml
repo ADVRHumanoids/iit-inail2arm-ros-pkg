@@ -1,0 +1,57 @@
+XBotInterface:
+  urdf: xacro $(rospack find inail2arm_urdf)/urdf/inail2arm.urdf.xacro end_effector:=dagana
+  srdf: xacro $(rospack find inail2arm_srdf)/srdf/inail2arm.srdf.xacro end_effector:=dagana
+
+ModelInterface:
+  model_type: RBDL
+  is_model_floating_base: false
+  floating_base: false
+
+# hal
+xbotcore_device_configs:
+    sim: $(rospack find inail2arm_config)/hal/inail2arm_gz.yaml
+    dummy: $(rospack find inail2arm_config)/hal/inail2arm_dummy.yaml
+    ec_pos: ~/concert_ws/src/Inail2armConfig/hal/ec_all.yaml
+    ec_imp: ~/concert_ws/src/Inail2armConfig/hal/ec_all.yaml
+    ec_idle: ~/concert_ws/src/Inail2armConfig/hal/ec_all.yaml
+
+# threads
+xbotcore_threads:
+    rt_main:  {sched: fifo , prio: 60, period: 0.001}
+    nrt_main: {sched: other, prio: 0 , period: 0.005}
+
+
+# plugins
+xbotcore_plugins:
+
+    homing:
+        thread: rt_main
+        type: homing
+
+    homing_ee_down:
+        thread: rt_main
+        type: homing
+        params:
+           qhome: {value: [0.0,0.29,-1.85,0,0.97,0.0,0.0], type: Eigen::VectorXd} # 6 arm(6)
+           time: {value: 12.0, type: double}
+
+    ros_io: {thread: nrt_main, type: ros_io, params: {publish_tf: {type: bool, value: true}}}
+    ros_control: {thread: nrt_main, type: ros_control, params: {autostart: {type: bool, value: true}}}
+
+    ec_ros: {thread: nrt_main, type: ec_ros}
+
+    
+
+
+# global parameters
+xbotcore_param:
+    /xbot/hal/joint_safety/filter_autostart: {value: true, type: bool}
+    /xbot/hal/joint_safety/filter_cutoff_hz: {value: 2.0, type: double}
+    /xbot/hal/enable_safety: {value: true, type: bool}
+    /xbot_internal/ros_io/call_timeout: {value: 1.0, type: chrono}
+    /rt_main/memory_hooks: {value: true, type: bool}
+
+
+
+
+

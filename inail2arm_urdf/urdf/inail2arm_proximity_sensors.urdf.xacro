@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="inail2arm">
+
+  <link name="teraflex_1_sensor1_link"/>
+  <link name="teraflex_1_sensor2_link"/>
+  <link name="teraflex_1_sensor3_link"/>
+  <link name="teraflex_1_sensor4_link"/>
+  <link name="teraflex_1_sensor5_link"/>
+  <link name="teraflex_1_sensor6_link"/>
+
+    <!-- joint fake -->
+  <joint name="teraflex_1_sensor0_joint" type="fixed"> <!-- sensor 1 -->
+    <parent link="arm1_4"/>
+    <child link="teraflex_1_sensor1_link"/>
+    <origin rpy="-3.1416 0.0 0.0" xyz="0.05460 -0.069500 0.0599528"/>
+  </joint>
+    <!-- joint fake -->
+  <joint name="teraflex_1_sensor1_joint" type="fixed"> <!-- sensor 2 -->
+    <parent link="arm1_4"/>
+    <child link="teraflex_1_sensor2_link"/>
+    <origin rpy="3.1416 0.0 -1.5708" xyz="0.00 -0.112600 0.0599528"/>
+  </joint>
+    <!-- joint fake -->
+  <joint name="teraflex_1_sensor2_joint" type="fixed"> <!-- sensor 3 -->
+    <parent link="arm1_4"/>
+    <child link="teraflex_1_sensor3_link"/>
+    <origin rpy="3.1416 0.0 3.1416" xyz="-0.05460 -0.069500 0.0599528"/>
+  </joint>
+    <!-- joint fake -->
+  <joint name="teraflex_1_sensor3_joint" type="fixed"> <!-- sensor 4 -->
+    <parent link="arm1_4"/>
+    <child link="teraflex_1_sensor4_link"/>
+    <origin rpy="3.1416 0.0 0.0" xyz="0.05460 -0.1100 0.22920"/>
+  </joint>
+    <!-- joint fake -->
+  <joint name="teraflex_1_sensor4_joint" type="fixed"> <!-- sensor 5 -->
+    <parent link="arm1_4"/>
+    <child link="teraflex_1_sensor5_link"/>
+    <origin rpy="3.1416 0.0 -1.5708" xyz="0.0 -0.133600 0.22920"/>
+  </joint>
+    <!-- joint fake -->
+  <joint name="teraflex_1_sensor5_joint" type="fixed"> <!-- sensor 6 -->
+    <parent link="arm1_4"/>
+    <child link="teraflex_1_sensor6_link"/>
+    <origin rpy="3.1416 0.0 3.1416" xyz="-0.05460 -0.1100 0.22920"/>
+  </joint>
+
+</robot>
+

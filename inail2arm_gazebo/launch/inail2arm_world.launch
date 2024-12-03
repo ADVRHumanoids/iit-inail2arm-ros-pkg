@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="rviz" default="true" />
+
+<!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find inail2arm_gazebo)/worlds/inail2arm.world"/> 
+        <arg name="paused" value="false"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="gui" value="true"/>
+        <arg name="recording" value="false"/>
+        <arg name="debug" value="false"/>
+        <arg name="verbose" value="true"/>
+        <arg name="physics" value="ode"/>
+<!--   to record log, btw deprecated name now it is recording      -->
+<!--        <arg name="headless" default="false"/> -->
+    </include>
+
+    <!-- ***************************** ROBOT   ********************************************************************************************** -->
+
+    <include file="$(find inail2arm_gazebo)/launch/loaders/load_inail2arm.launch">
+    </include>
+    
+    <!-- *************************** RVIZ OPTION ********************************************************************************************* -->
+    <node if="$(arg rviz)" pkg="rviz" type="rviz" name="rviz" output="screen" args="-d $(find inail2arm_urdf)/config/inail2arm_rviz.rviz">
+    </node> 
+
+</launch>
+

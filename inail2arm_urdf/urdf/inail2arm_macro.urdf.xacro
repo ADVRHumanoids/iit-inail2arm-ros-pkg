@@ -132,7 +132,8 @@
             <geometry>
                <mesh
                   filename="package://inail2arm_urdf/meshes/mesh_wrist-pitch.stl"
-                  scale="0.001 ${rot*0.001} 0.001" />
+                  scale="0.001
+               ${rot*0.001} 0.001" />
             </geometry>
             <material name="blue" />
          </visual>
@@ -176,8 +177,6 @@
 
       </link>
 
-      <link name="tcp_${arm_num}" />
-
       <!--wrist-pitch -->
       <!-- /LINKS -->
 
@@ -188,9 +187,10 @@
          <parent link="${parent}" />
          <child link="arm${arm_num}_1" />
          <axis xyz="0 0 1" />
-         <xacro:insert_block name="origin" />
-         <limit lower="${j_arm_1_lower[0]}" upper="${j_arm_1_upper[0]}"
-            effort="${j_arm_1_torque[0]}" velocity="${j_arm_1_velocity[0]}" />
+         <origin xyz="${Shoulder_1_Ox} ${rot*Shoulder_1_Oy} ${Shoulder_1_Oz}"
+            rpy="${rot*Shoulder_1_roll} ${Shoulder_1_pitch} ${Shoulder_1_yaw}" />
+         <limit lower="${j_arm_1_lower[arm_num-1]}" upper="${j_arm_1_upper[arm_num-1]}"
+            effort="${j_arm_1_torque[arm_num-1]}" velocity="${j_arm_1_velocity[arm_num-1]}" />
       </joint>
       <!-- shoulder yaw -->
 
@@ -201,8 +201,8 @@
          <origin xyz="${Shoulder_2_Ox} ${rot*Shoulder_2_Oy} ${Shoulder_2_Oz}"
             rpy="${rot*Shoulder_2_roll} ${Shoulder_2_pitch} ${Shoulder_2_yaw}" />
          <axis xyz="0 0 -1" />
-         <limit lower="${j_arm_2_lower[0]}" upper="${j_arm_2_upper[0]}"
-            effort="${j_arm_2_torque[0]}" velocity="${j_arm_2_velocity[0]}" />
+         <limit lower="${j_arm_2_lower[arm_num-1]}" upper="${j_arm_2_upper[arm_num-1]}"
+            effort="${j_arm_2_torque[arm_num-1]}" velocity="${j_arm_2_velocity[arm_num-2]}" />
       </joint>
       <!-- shoulder pitch -->
 
@@ -213,8 +213,8 @@
          <origin xyz="${Elbow_1_Ox} ${rot*Elbow_1_Oy} ${Elbow_1_Oz}"
             rpy="${rot*Elbow_1_roll} ${Elbow_1_pitch} ${Elbow_1_yaw}" />
          <axis xyz="0 0 1" />
-         <limit lower="${j_arm_3_lower[0]}" upper="${j_arm_3_upper[0]}"
-            effort="${j_arm_3_torque[0]}" velocity="${j_arm_3_velocity[0]}" />
+         <limit lower="${j_arm_3_lower[arm_num-1]}" upper="${j_arm_3_upper[arm_num-1]}"
+            effort="${j_arm_3_torque[arm_num-1]}" velocity="${j_arm_3_velocity[arm_num-1]}" />
       </joint>
       <!-- elbow yaw -->
 
@@ -222,11 +222,11 @@
       <joint name="j_arm${arm_num}_4" type="revolute">
          <parent link="arm${arm_num}_3" />
          <child link="arm${arm_num}_4" />
-         <origin xyz="${Forearm_1_Ox} ${rot*Forearm_1_Oy} ${Forearm_1_Oz}"
+         <origin xyz="${Forearm_1_Ox} ${Forearm_1_Oy} ${Forearm_1_Oz}"
             rpy="${rot*Forearm_1_roll} ${Forearm_1_pitch} ${Forearm_1_yaw}" />
          <axis xyz="0 0 1" />
-         <limit lower="${j_arm_4_lower[0]}" upper="${j_arm_4_upper[0]}"
-            effort="${j_arm_4_torque[0]}" velocity="${j_arm_4_velocity[0]}" />
+         <limit lower="${j_arm_4_lower[arm_num-1]}" upper="${j_arm_4_upper[arm_num-1]}"
+            effort="${j_arm_4_torque[arm_num-1]}" velocity="${j_arm_4_velocity[arm_num-1]}" />
       </joint>
       <!-- forearm yaw -->
 
@@ -237,31 +237,24 @@
          <origin xyz="${Wrist_1_Ox} ${rot*Wrist_1_Oy} ${Wrist_1_Oz}"
             rpy="${rot*Wrist_1_roll} ${Wrist_1_pitch} ${Wrist_1_yaw}" />
          <axis xyz="0 0 1" />
-         <limit lower="${j_arm_5_lower[0]}" upper="${j_arm_5_upper[0]}"
-            effort="${j_arm_5_torque[0]}" velocity="${j_arm_5_velocity[0]}" />
+         <limit lower="${j_arm_5_lower[arm_num-1]}" upper="${j_arm_5_upper[arm_num-1]}"
+            effort="${j_arm_5_torque[arm_num-1]}" velocity="${j_arm_5_velocity[arm_num-1]}" />
       </joint>
       <!-- wrist pitch-->
 
-      <!-- wrist2 roll-->
+      <!-- wrist2 pitch-->
       <joint name="j_arm${arm_num}_6" type="revolute">
          <parent link="arm${arm_num}_5" />
          <child link="arm${arm_num}_6" />
          <origin xyz="${Wrist_2_Ox} ${rot*Wrist_2_Oy} ${Wrist_2_Oz}"
             rpy="${rot*Wrist_2_roll} ${Wrist_2_pitch} ${Wrist_2_yaw}" />
          <axis xyz="0 0 1" />
-         <limit lower="${j_arm_6_lower[0]}" upper="${j_arm_6_upper[0]}"
-            effort="${j_arm_6_torque[0]}" velocity="${j_arm_6_velocity[0]}" />
+         <limit lower="${j_arm_6_lower[arm_num-1]}" upper="${j_arm_6_upper[arm_num-1]}"
+            effort="${j_arm_6_torque[arm_num-1]}" velocity="${j_arm_6_velocity[arm_num-1]}" />
       </joint>
-      <!-- /wrist2 roll-->
+      <!-- /wrist2 pitch-->
 
-      <!-- virtual tip pitch-->
-      <joint name="j_tcp_${arm_num}" type="fixed">
-         <parent link="arm${arm_num}_6" />
-         <child link="tcp_${arm_num}" />
-         <origin xyz="${No_end_ft_Ox} ${rot*No_end_ft_Oy} ${No_end_ft_Oz}"
-            rpy="${rot*No_end_ft_roll} ${No_end_ft_pitch} ${No_end_ft_yaw}" />
-      </joint>
-      <!-- virtual tip pitch-->
+
 
    </xacro:macro>
    <!-- /macro arms -->

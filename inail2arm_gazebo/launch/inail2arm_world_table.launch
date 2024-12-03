@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<launch>
+
+    <env name="ROSCONSOLE_FORMAT" value="[${severity}] [${time}] [${node}] [${function}] [${line}]: ${message}"/>
+
+    
+    <arg name="rviz" default="true" />
+
+<!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find inail2arm_gazebo)/worlds/inail2arm.world"/> 
+        <arg name="paused" value="false"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="gui" value="true"/>
+        <arg name="recording" value="false"/>
+        <arg name="debug" value="false"/>
+        <arg name="verbose" value="true"/>
+        <arg name="physics" value="ode"/>
+<!--   to record log, btw deprecated name now it is recording      -->
+<!--        <arg name="headless" default="false"/> -->
+    </include>
+    
+    <!-- ***************************** TABLE   ********************************************************************************* -->
+
+    <arg name="t_pose_x" value="0" />
+    <arg name="t_pose_y" value="0" />
+    <arg name="surface_high" value="0.853" />
+    <arg name="t_size_x" value="0.75" />
+    <arg name="t_size_y" value="1.2" />
+    <arg name="t_size_z" value="0.05" />
+
+
+    <include file="$(find iit_gazebo_worlds_pkg)/table/launch/load_table.launch">
+        <arg name="table_name" value="table"/>
+        <arg name="table_urdf_name" value="table"/>
+        <arg name="pub_tf" value="true"/>
+        <arg name="pub_world_pose" value="false"/>
+        <arg name="t_pose_x" value="$(arg t_pose_x)" />
+        <arg name="t_pose_y" value="$(arg t_pose_y)" />
+        <arg name="surface_high" value="$(arg surface_high)"/>
+        <arg name="surface_size_x" value="$(arg t_size_x)"/>
+        <arg name="surface_size_y" value="$(arg t_size_y)"/>
+        <arg name="surface_size_z" value="$(arg t_size_z)"/>
+        <arg name="surface_gazebo_color" value="Gazebo/Gold"/>
+    </include>
+    
+    
+    <!-- ***************************** ROBOT   ******************************************************************** -->
+    
+    <include file="$(find inail2arm_gazebo)/launch/loaders/load_inail2arm.launch">
+        <arg name="pose_x" value="$(eval t_pose_x - (t_size_x/2 - 0.10))" />
+        <arg name="pose_y" value="$(eval t_pose_y - (t_size_y/2 - 0.10))" />
+        <arg name="pose_z" value="$(eval surface_high)" />
+        <arg name="waitFor" value="table" />
+    </include>
+    
+
+    
+        <!-- unique node for pub all obj_world_poses, so we put pub_xxx_data to false above -->
+    <node name="poses_gazebo_to_tf" pkg="iit_gazebo_worlds_pkg" type="pose_gazebo_to_tf.py" output="screen" 
+          args="--reference world --models table --models_link surface --ignore_roslaunch_added_param" />
+    
+    <!-- *************************** RVIZ OPTION ********************************************************************************************* -->
+    <node if="$(arg rviz)" pkg="rviz" type="rviz" name="rviz" output="screen" args="-d $(find inail2arm_urdf)/config/inail2arm_table_rviz.rviz">
+    </node> 
+
+</launch>
+
