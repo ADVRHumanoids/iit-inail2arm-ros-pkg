@@ -11,18 +11,40 @@
     <arg name="pub_world_tf" default="false" />
     <arg name="end_effector" default="none" />   
     <arg name="nicla" default="false" />
+    <arg name="nicla_camera_width" default="320" />
+    <arg name="nicla_camera_height" default="240" />
+    <arg name="nicla_camera_hz" default="30" />
+    <arg name="nicla_camera_P_fx" default="421.373566" />
+    <arg name="nicla_camera_P_fy" default="426.438812" />
+    <arg name="nicla_camera_P_cx" default="168.731782" />
+    <arg name="nicla_camera_P_cy" default="102.665989" />
+    <arg name="nicla_camera_K_fx" default="416.65053" />
+    <arg name="nicla_camera_K_fy" default="419.40464" />
+    <arg name="nicla_camera_K_cx" default="166.12451" />
+    <arg name="nicla_camera_K_cy" default="104.41054" />
     
     <arg name="xacroArm" value="$(find inail2arm_urdf)/urdf/inail2arm_robot.urdf.xacro
-         x:=$(arg pose_x)
-         y:=$(arg pose_y)
-         z:=$(arg pose_z)
-         roll:=$(arg pose_roll)
-         pitch:=$(arg pose_pitch)
-         yaw:=$(arg pose_yaw)
-         end_effector:=$(arg end_effector)
-         nicla:=$(arg nicla)
-         gazebo_urdf:=true
-         "
+        x:=$(arg pose_x)
+        y:=$(arg pose_y)
+        z:=$(arg pose_z)
+        roll:=$(arg pose_roll)
+        pitch:=$(arg pose_pitch)
+        yaw:=$(arg pose_yaw)
+        end_effector:=$(arg end_effector)
+        nicla:=$(arg nicla)
+        nicla_camera_width:=$(arg nicla_camera_width)
+        nicla_camera_height:=$(arg nicla_camera_height)
+        nicla_camera_hz:=$(arg nicla_camera_hz)
+        nicla_camera_P_fx:=$(arg nicla_camera_P_fx)
+        nicla_camera_P_fy:=$(arg nicla_camera_P_fy)
+        nicla_camera_P_cx:=$(arg nicla_camera_P_cx)
+        nicla_camera_P_cy:=$(arg nicla_camera_P_cy)
+        nicla_camera_K_fx:=$(arg nicla_camera_K_fx)
+        nicla_camera_K_fy:=$(arg nicla_camera_K_fy)
+        nicla_camera_K_cx:=$(arg nicla_camera_K_cx)
+        nicla_camera_K_cy:=$(arg nicla_camera_K_cy)
+        gazebo_urdf:=true
+        "
     />
     <param name="gazebo/robot_description" command="$(find xacro)/xacro $(arg xacroArm)" />
 
