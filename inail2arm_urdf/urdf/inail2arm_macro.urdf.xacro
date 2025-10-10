@@ -19,7 +19,7 @@
          <visual>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
             <geometry>
-               <mesh filename="package://inail2arm_urdf/meshes/mesh_shoulder-yaw.stl"
+               <mesh filename="package://inail2arm_urdf/meshes/mesh_shoulder_yaw.stl"
                   scale="0.001 ${rot*0.001} 0.001" />
             </geometry>
             <material name="blue" />
@@ -28,7 +28,7 @@
          <collision>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
             <geometry>
-               <mesh filename="package://inail2arm_urdf/meshes/simple/mesh_shoulder-yaw.stl"
+               <mesh filename="package://inail2arm_urdf/meshes/simple/mesh_shoulder_yaw.stl"
                   scale="0.001 ${rot*0.001} 0.001" />
             </geometry>
          </collision>
@@ -47,7 +47,7 @@
          <visual>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
             <geometry>
-               <mesh filename="package://inail2arm_urdf/meshes/mesh_shoulder-pitch.stl"
+               <mesh filename="package://inail2arm_urdf/meshes/mesh_shoulder_pitch.stl"
                   scale="0.001 ${rot*0.001} 0.001" />
             </geometry>
             <material name="blue" />
@@ -56,7 +56,7 @@
          <collision>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
             <geometry>
-               <mesh filename="package://inail2arm_urdf/meshes/simple/mesh_shoulder-pitch.stl"
+               <mesh filename="package://inail2arm_urdf/meshes/simple/mesh_shoulder_pitch.stl"
                   scale="0.001 ${rot*0.001} 0.001" />
             </geometry>
          </collision>
@@ -103,7 +103,7 @@
          <visual>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
             <geometry>
-               <mesh filename="package://inail2arm_urdf/meshes/mesh_forearm-yaw.stl"
+               <mesh filename="package://inail2arm_urdf/meshes/mesh_forearm_yaw.stl"
                   scale="0.001 ${rot*0.001} 0.001" />
             </geometry>
             <material name="blue" />
@@ -112,7 +112,7 @@
          <collision>
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
             <geometry>
-               <mesh filename="package://inail2arm_urdf/meshes/simple/mesh_forearm-yaw.stl"
+               <mesh filename="package://inail2arm_urdf/meshes/simple/mesh_forearm_yaw.stl"
                   scale="0.001 ${rot*0.001} 0.001" />
             </geometry>
          </collision>
@@ -131,7 +131,7 @@
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
             <geometry>
                <mesh
-                  filename="package://inail2arm_urdf/meshes/mesh_wrist-pitch.stl"
+                  filename="package://inail2arm_urdf/meshes/mesh_wrist_pitch.stl"
                   scale="0.001
                ${rot*0.001} 0.001" />
             </geometry>
@@ -142,7 +142,7 @@
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
             <geometry>
                <mesh
-                  filename="package://inail2arm_urdf/meshes/simple/mesh_wrist-pitch.stl"
+                  filename="package://inail2arm_urdf/meshes/simple/mesh_wrist_pitch.stl"
                   scale="0.001
                ${rot*0.001} 0.001" />
             </geometry>
@@ -160,7 +160,7 @@
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
             <geometry>
                <mesh
-                  filename="package://inail2arm_urdf/meshes/mesh_wrist-roll.stl"
+                  filename="package://inail2arm_urdf/meshes/mesh_wrist_roll.stl"
                   scale="0.001 ${rot*0.001} 0.001" />
             </geometry>
             <material name="blue" />
@@ -170,7 +170,7 @@
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
             <geometry>
                <mesh
-                  filename="package://inail2arm_urdf/meshes/simple/mesh_wrist-roll.stl"
+                  filename="package://inail2arm_urdf/meshes/simple/mesh_wrist_roll.stl"
                   scale="0.001 ${rot*0.001} 0.001" />
             </geometry>
          </collision>
