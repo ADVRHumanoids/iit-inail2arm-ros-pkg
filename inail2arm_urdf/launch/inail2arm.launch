@@ -1,27 +1,6 @@
 <launch>
 
-    <arg name="gui" default="true" />
-    <arg name="visualize_inertia" default="false" />
-
-
-    <param name="robot_description" command="$(find xacro)/xacro '$(find inail2arm_urdf)/urdf/inail2arm.urdf.xacro'" />
-    <param name="robot_description_semantic" command="$(find xacro)/xacro '$(find inail2arm_srdf)/srdf/inail2arm.srdf.xacro'" />
-    
-    <param name="use_gui" value="$(arg gui)"/>
-    <param name="rate" value="50.0"/>
-     
-        
-    <node name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui">
-       <param name="publish_default_efforts" value="True"/>
-    </node>
-
-    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen" >
-        <param name="publish_frequency" type="double" value="250.0" />
+    <node pkg="rviz2" exec="rviz2" name="rviz2" output="screen" args="-d $(find-pkg-share inail2arm_urdf)/rviz/inail2arm_rviz.rviz">
     </node> 
-
-    <node pkg="rviz" type="rviz" name="rviz" output="screen" if="$(arg gui)" args="-d $(find inail2arm_urdf)/config/inail2arm_rviz.rviz">
-    </node> 
-
-    <node if="$(arg visualize_inertia)" pkg="robot_inertia_publisher" type="robot_inertia_publisher" name="robot_inertia_publisher" output="screen" />
 
 </launch>

@@ -2,43 +2,47 @@
 <launch>
 
     <arg name="ci_rviz" default="false" />
-    <arg name="solver" default="OpenSot"/>
-    <arg name="problem_description_file" default="$(find inail2arm_cartesio)/config/inail2arm_simple_stack.yaml"/>
     <arg name="gdb" default="false" />
-    <arg if="$(arg gdb)" name="prefix" value="gdb -ex run --arg"/>
-    <arg unless="$(arg gdb)" name="prefix" value=""/>
-    <arg name="rate" default="100.0"/>
-    <arg name="tf_prefix" default="ci"/>
+    <let if="$(var gdb)" name="prefix" value="gdb -ex run --arg"/>
+    <let unless="$(var gdb)" name="prefix" value=""/>
     <arg name="markers" default="false"/>
-    <arg name="namespace" default=""/> <!-- dummy argument avoids pass_all_args error in parent launch file -->
+    <arg name="rate" default="100.0"/>
+    <arg name="solver" default="OpenSot"/>
+    <arg name="tf_prefix" default="ci"/>
+    <arg name="namespace" default="/"/> <!-- dummy argument avoids pass_all_args error in parent launch file -->
     <arg name="is_model_floating_base" default="false"/>    
+    <arg name="enable_otg" default="true"/>
+    <arg name="problem_description_file" default="$(find-pkg-share inail2arm_cartesio)/config/inail2arm_simple_stack.yaml"/>
     
-    <param name="cartesian/joint_blacklist" type="yaml" value="[dagana_1_claw_joint]"/>
-    <param name="cartesian/problem_description" textfile="$(arg problem_description_file)"/>
 
-    <node pkg="cartesian_interface" type="ros_server_node" 
+    <node pkg="cartesian_interface_ros" exec="ros_server_node" 
                                     name="ros_server_node" 
-                                    required="true" 
                                     output="screen" 
-                                    launch-prefix="$(arg prefix)">
+                                    launch-prefix="$(var prefix)">
                                     
-        <param name="is_model_floating_base" value="$(arg is_model_floating_base)"/>
-        <param name="model_type" value="RBDL"/>
-        <param name="solver" value="$(arg solver)"/>
-        <param name="rate" value="$(arg rate)"/>
-        <param name="tf_prefix" value="$(arg tf_prefix)"/>
+        <remap from="robot_description" to="/xbotcore/robot_description" />
+        <remap from="robot_description_semantic" to="/xbotcore/robot_description_semantic" />
+        <remap from="/model_description/robot_description" to="/xbotcore/robot_description"/>
+        <remap from="/model_description/robot_description_semantic" to="/xbotcore/robot_description_semantic"/>
+
+        <param name="enable_otg" value="$(var enable_otg)"/>
+        <param name="is_model_floating_base" value="$(var is_model_floating_base)"/>
+        <param name="model_type" value="pin"/>
+        <param name="solver" value="$(var solver)"/>
+        <param name="use_xbot_config" value="false"/>
+        <param name="rate" value="$(var rate)"/>
+        <param name="tf_prefix" value="$(var tf_prefix)"/>
         <param name="world_frame_link" value="world"/>
-
-        
-        <remap from="robot_description" to="xbotcore/robot_description" />
-        <remap from="robot_description_semantic" to="xbotcore/robot_description_semantic" />
-        
+        <param name="joint_blacklist" type="yaml" value="[dagana_1_claw_joint]"/>
+        <param name="problem_description" type="str" value="$(command 'cat $(var problem_description_file)')"/>
     </node>
 
-    <node if="$(arg markers)" pkg="cartesian_interface" type="marker_spawner" name="interactive_markers" output="screen">
-        <param name="tf_prefix" value="$(arg tf_prefix)"/>
+    <node if="$(var markers)" pkg="cartesian_interface_ros" exec="marker_spawner" name="interactive_markers" output="screen">
+        <param name="tf_prefix" value="$(var tf_prefix)"/>
+        <remap from="robot_description" to="/xbotcore/robot_description" />
+        <remap from="robot_description_semantic" to="/xbotcore/robot_description_semantic" />
     </node>
 
-    <node if="$(arg ci_rviz)" pkg="rviz" type="rviz" name="rviz_ci" output="screen" args="-d $(find inail2arm_cartesio)/config/inail2arm_cartesio.rviz">
+    <node if="$(var ci_rviz)" pkg="rviz2" exec="rviz2" name="rviz2" output="screen" args="-d $(find-pkg-share inail2arm_cartesio)/rviz/inail2arm_cartesio.rviz">
     </node> 
 </launch>

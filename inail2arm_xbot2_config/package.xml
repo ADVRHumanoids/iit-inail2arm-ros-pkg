@@ -1,12 +1,10 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>inail2arm_gazebo</name>
+  <name>inail2arm_xbot2_config</name>
   <version>0.0.0</version>
-  <description>The inail2arm_gazebo package</description>
-
-  <maintainer email="davide.torielli@iit.it">tori</maintainer>
-
+  <description>The inail2arm_xbot2_config package</description>
+  <maintainer email="davide.torielli@iit.it">Tori</maintainer>
   <license>TODO</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>

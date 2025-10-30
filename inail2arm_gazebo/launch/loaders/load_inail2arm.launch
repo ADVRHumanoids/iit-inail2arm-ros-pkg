@@ -22,38 +22,71 @@
     <arg name="nicla_camera_K_fy" default="419.40464" />
     <arg name="nicla_camera_K_cx" default="166.12451" />
     <arg name="nicla_camera_K_cy" default="104.41054" />
+    <arg name="entity_name" default="inail2arm" />
     
-    <arg name="xacroArm" value="$(find inail2arm_urdf)/urdf/inail2arm_robot.urdf.xacro
-        x:=$(arg pose_x)
-        y:=$(arg pose_y)
-        z:=$(arg pose_z)
-        roll:=$(arg pose_roll)
-        pitch:=$(arg pose_pitch)
-        yaw:=$(arg pose_yaw)
-        end_effector:=$(arg end_effector)
-        nicla:=$(arg nicla)
-        nicla_camera_width:=$(arg nicla_camera_width)
-        nicla_camera_height:=$(arg nicla_camera_height)
-        nicla_camera_hz:=$(arg nicla_camera_hz)
-        nicla_camera_P_fx:=$(arg nicla_camera_P_fx)
-        nicla_camera_P_fy:=$(arg nicla_camera_P_fy)
-        nicla_camera_P_cx:=$(arg nicla_camera_P_cx)
-        nicla_camera_P_cy:=$(arg nicla_camera_P_cy)
-        nicla_camera_K_fx:=$(arg nicla_camera_K_fx)
-        nicla_camera_K_fy:=$(arg nicla_camera_K_fy)
-        nicla_camera_K_cx:=$(arg nicla_camera_K_cx)
-        nicla_camera_K_cy:=$(arg nicla_camera_K_cy)
+    <!-- <arg name="xacroArm" value="$(find inail2arm_urdf)/urdf/inail2arm_robot.urdf.xacro
+        x:=$(var pose_x)
+        y:=$(var pose_y)
+        z:=$(var pose_z)
+        roll:=$(var pose_roll)
+        pitch:=$(var pose_pitch)
+        yaw:=$(var pose_yaw)
+        end_effector:=$(var end_effector)
+        nicla:=$(var nicla)
+        nicla_camera_width:=$(var nicla_camera_width)
+        nicla_camera_height:=$(var nicla_camera_height)
+        nicla_camera_hz:=$(var nicla_camera_hz)
+        nicla_camera_P_fx:=$(var nicla_camera_P_fx)
+        nicla_camera_P_fy:=$(var nicla_camera_P_fy)
+        nicla_camera_P_cx:=$(var nicla_camera_P_cx)
+        nicla_camera_P_cy:=$(var nicla_camera_P_cy)
+        nicla_camera_K_fx:=$(var nicla_camera_K_fx)
+        nicla_camera_K_fy:=$(var nicla_camera_K_fy)
+        nicla_camera_K_cx:=$(var nicla_camera_K_cx)
+        nicla_camera_K_cy:=$(var nicla_camera_K_cy)
         gazebo_urdf:=true
         "
     />
-    <param name="gazebo/robot_description" command="$(find xacro)/xacro $(arg xacroArm)" />
+    <param name="gazebo/robot_description" command="$(find xacro)/xacro $(var xacroArm)" />
+    <node if="$(eval waitFor == '')" name="urdf_spawner_inail2arm" pkg="gazebo_ros" exec="spawn_model" respawn="false" output="screen"
+          args="-urdf -model inail2arm -param gazebo/robot_description"/> -->
 
-    <node if="$(eval waitFor == '')" name="urdf_spawner_inail2arm" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-          args="-urdf -model inail2arm -param gazebo/robot_description"/>
-    <node unless="$(eval waitFor == '')" name="urdf_spawner_inail2arm" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-          args="-urdf -model inail2arm -param gazebo/robot_description -wait $(arg waitFor)"/>
+    <arg name="xacro_file" default="$(find-pkg-share inail2arm_urdf)/urdf/inail2arm_robot.urdf.xacro"/>
+    <let name="robot_description" value="$(command 'xacro $(var xacro_file) 
+        x:=$(var pose_x)
+        y:=$(var pose_y)
+        z:=$(var pose_z)
+        roll:=$(var pose_roll)
+        pitch:=$(var pose_pitch)
+        yaw:=$(var pose_yaw)
+        end_effector:=$(var end_effector)
+        nicla:=$(var nicla)
+        nicla_camera_width:=$(var nicla_camera_width)
+        nicla_camera_height:=$(var nicla_camera_height)
+        nicla_camera_hz:=$(var nicla_camera_hz)
+        nicla_camera_P_fx:=$(var nicla_camera_P_fx)
+        nicla_camera_P_fy:=$(var nicla_camera_P_fy)
+        nicla_camera_P_cx:=$(var nicla_camera_P_cx)
+        nicla_camera_P_cy:=$(var nicla_camera_P_cy)
+        nicla_camera_K_fx:=$(var nicla_camera_K_fx)
+        nicla_camera_K_fy:=$(var nicla_camera_K_fy)
+        nicla_camera_K_cx:=$(var nicla_camera_K_cx)
+        nicla_camera_K_cy:=$(var nicla_camera_K_cy)
+        gazebo_urdf:=true')"
+    />
+
+    <node if="$(eval 'not \'$(var waitFor)\'')" pkg="gazebo_ros" exec="spawn_entity.py" name="urdf_spawner_$(var entity_name)" respawn="false" output="screen"
+            args="-entity $(var entity_name)
+                -xml '$(var robot_description)'"/>
+
+    <node unless="$(eval 'not \'$(var waitFor)\'')" pkg="gazebo_ros" exec="spawn_entity.py" name="urdf_spawner_$(var entity_name)" respawn="false" output="screen"
+            args="-entity $(var entity_name) 
+                -xml '$(var robot_description)' 
+                -wait $(var waitFor)"/>
     
-    <node if="$(arg pub_world_tf)" pkg="tf2_ros" type="static_transform_publisher" name="inail2arm_world_to_base_tf" args="$(arg pose_x) $(arg pose_y) $(arg pose_z) $(arg pose_yaw) $(arg pose_pitch) $(arg pose_roll) world base_link"/>
-    
+    <node if="$(var pub_world_tf)" pkg="tf2_ros" exec="static_transform_publisher" name="$(var entity_name)_world_to_base_tf" 
+            args="--x $(var pose_x) --y $(var pose_y) --z $(var pose_z) 
+                --roll $(var pose_roll) --pitch $(var pose_pitch) --yaw $(var pose_yaw) 
+                --frame-id world --child-frame-id base_link"/>    
 </launch>
 

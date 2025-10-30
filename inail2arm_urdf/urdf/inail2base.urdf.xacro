@@ -14,7 +14,7 @@
             <visual>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
                 <geometry>
-                    <mesh filename="package://inail2arm_urdf/meshes/mesh_base.stl"
+                    <mesh filename="file://$(find inail2arm_urdf)/meshes/mesh_base.stl"
                         scale="0.001 ${rot*0.001} 0.001" />
                 </geometry>
                 <material name="dark_grey" />
@@ -23,7 +23,7 @@
             <collision>
                 <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
                 <geometry>
-                    <mesh filename="package://inail2arm_urdf/meshes/simple/mesh_base.stl"
+                    <mesh filename="file://$(find inail2arm_urdf)/meshes/simple/mesh_base.stl"
                         scale="0.001 ${rot*0.001} 0.001" />
                 </geometry>
             </collision>
