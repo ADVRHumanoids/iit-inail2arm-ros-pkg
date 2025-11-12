@@ -17,7 +17,7 @@ class JointCommandPublisher(Node):
         msg.header.stamp = Clock().now().to_msg()  # correct ROS time
         msg.header.frame_id = ''
         msg.name = ['j_arm1_1', 'j_arm1_2', 'j_arm1_3', 'j_arm1_4', 'j_arm1_5', 'j_arm1_6', 'dagana_1_claw_joint']  # Example joint names
-        msg.position = [0.6, 0.5, 0.5, 0.0, 0.5, 0.0, 0.9]  # Example positions
+        msg.position = [0.0, 0.29, -1.85, 0.0, 0.97, 1.51, 1.0]  # Example positions
         msg.velocity = []  # Example velocities
         # msg.effort = [0.0, 205.0, 0.0, 0.0, 0.0, 0.0]    # Example efforts
         msg.effort = []
