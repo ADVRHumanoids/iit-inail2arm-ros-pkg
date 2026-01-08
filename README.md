@@ -15,10 +15,10 @@ follow install the xbot2 framework part on [this website](https://advrhumanoids.
 http://xbot.cloud/xbot2-nightly/
 ```
 
-### iit-dagana-ros-pkg (optional)
+### iit-dagana-ros-pkg
 
 ```bash
-git clone -b ros2 https://github.com/ADVRHumanoids/iit-inail2arm-ros-pkg.git
+git clone -b ros2 https://github.com/ADVRHumanoids/iit-dagana-ros-pkg.git
 ```
 
 ## how to use

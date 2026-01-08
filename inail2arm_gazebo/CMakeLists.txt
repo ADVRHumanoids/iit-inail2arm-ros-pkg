@@ -30,7 +30,6 @@ install(PROGRAMS
   scripts/send_xbot_gripper_command
   scripts/send_cartesio_command
   scripts/teleop_joystick_example.py
-  scripts/teleop_keyboard_example.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
