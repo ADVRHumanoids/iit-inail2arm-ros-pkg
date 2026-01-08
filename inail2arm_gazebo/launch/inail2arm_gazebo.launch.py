@@ -38,6 +38,7 @@ def generate_launch_description():
     P_arg = DeclareLaunchArgument("pitch", default_value="0")
     Y_arg = DeclareLaunchArgument("yaw", default_value="0")
     rviz_arg = DeclareLaunchArgument("rviz", default_value="true")
+
     end_effector_arg = DeclareLaunchArgument("end_effector", default_value="dagana")
     nicla_arg = DeclareLaunchArgument("nicla", default_value="false")
     nicla_camera_width_arg = DeclareLaunchArgument("nicla_camera_width", default_value="320")
@@ -52,7 +53,6 @@ def generate_launch_description():
     nicla_camera_K_cx_arg = DeclareLaunchArgument("nicla_camera_K_cx", default_value="166.12451")
     nicla_camera_K_cy_arg = DeclareLaunchArgument("nicla_camera_K_cy", default_value="104.41054")
     proximity_sensors_arg = DeclareLaunchArgument("proximity_sensors", default_value="false")
-    pub_world_tf_arg = DeclareLaunchArgument("pub_world_tf", default_value="false")
 
     # Setup project paths
     pkg_project = get_package_share_directory('inail2arm_gazebo')
@@ -68,7 +68,18 @@ def generate_launch_description():
             mappings={
                 "end_effector": context.launch_configurations["end_effector"],
                 "nicla": context.launch_configurations["nicla"],
-                "pub_world_tf": context.launch_configurations["pub_world_tf"],
+                "nicla_camera_width": context.launch_configurations["nicla_camera_width"],
+                "nicla_camera_height": context.launch_configurations["nicla_camera_height"],
+                "nicla_camera_hz": context.launch_configurations["nicla_camera_hz"],
+                "nicla_camera_P_fx": context.launch_configurations["nicla_camera_P_fx"],
+                "nicla_camera_P_fy": context.launch_configurations["nicla_camera_P_fy"],
+                "nicla_camera_P_cx": context.launch_configurations["nicla_camera_P_cx"],
+                "nicla_camera_P_cy": context.launch_configurations["nicla_camera_P_cy"],
+                "nicla_camera_K_fx": context.launch_configurations["nicla_camera_K_fx"],
+                "nicla_camera_K_fy": context.launch_configurations["nicla_camera_K_fy"],
+                "nicla_camera_K_cx": context.launch_configurations["nicla_camera_K_cx"],
+                "nicla_camera_K_cy": context.launch_configurations["nicla_camera_K_cy"],
+                "proximity_sensors": context.launch_configurations["proximity_sensors"],
             },
         )
         robot_desc = robot_description_config.toxml()
@@ -154,7 +165,6 @@ def generate_launch_description():
         nicla_camera_K_cx_arg,
         nicla_camera_K_cy_arg,
         proximity_sensors_arg,
-        pub_world_tf_arg,
         create_robot_description_arg,
         gz_sim,
         pub_robot_description,
