@@ -1,5 +1,5 @@
 XBotInterface:
-  urdf: xacro $(ros2 pkg prefix --share inail2arm_urdf)/urdf/inail2arm.urdf.xacro end_effector:=dagana
+  urdf: xacro $(ros2 pkg prefix --share inail2arm_urdf)/urdf/inail2arm.urdf.xacro end_effector:=dagana dagana_claws_type:=centauro_claws_palm_separated
   srdf: xacro $(ros2 pkg prefix --share inail2arm_srdf)/srdf/inail2arm.srdf.xacro end_effector:=dagana
 
 ModelInterface:
@@ -33,7 +33,7 @@ xbotcore_plugins:
         thread: rt_main
         type: homing
         params:
-           qhome: {value: [0.0,0.29,-1.85,0,0.97,0.0,0.0], type: Eigen::VectorXd} # 6 arm(6)
+           qhome: {value: [0.0,0.29,1.85,0,-1.5,0.0,0.0], type: Eigen::VectorXd} # 6 arm(6)
            time: {value: 4.0, type: double}
 
     ros_io: {thread: nrt_main, type: ros2_io, params: {publish_tf: {type: bool, value: true}}}

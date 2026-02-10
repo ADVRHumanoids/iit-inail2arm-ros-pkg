@@ -3,7 +3,7 @@ project(inail2arm_xbot2_config)
 
 find_package(ament_cmake REQUIRED)
 
-install(DIRECTORY hal config
+install(DIRECTORY config
   DESTINATION share/${PROJECT_NAME}
 )
 

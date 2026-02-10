@@ -12,7 +12,8 @@
     <arg name="namespace" default="/"/> <!-- dummy argument avoids pass_all_args error in parent launch file -->
     <arg name="is_model_floating_base" default="false"/>    
     <arg name="enable_otg" default="true"/>
-    <arg name="problem_description_file" default="$(find-pkg-share inail2arm_cartesio)/config/inail2arm_simple_stack.yaml"/>
+    <!-- <arg name="problem_description_file" default="$(find-pkg-share inail2arm_cartesio)/config/inail2arm_simple_stack.yaml"/> -->
+    <arg name="problem_description_file" default="$(find-pkg-share inail2arm_cartesio)/config/inail2arm_haria_hil_cartesio.yaml"/>
     
 
     <node pkg="cartesian_interface_ros" exec="ros_server_node" 

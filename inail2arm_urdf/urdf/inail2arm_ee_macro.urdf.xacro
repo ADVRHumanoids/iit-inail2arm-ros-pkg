@@ -64,8 +64,27 @@
             <child link="tcp_${arm_num}" />
             <origin xyz="0 0 0" rpy="0 0 0"/>
         </joint>
+
     </xacro:if>
-     
+
+
+    <xacro:if value="${DAGANA_CLAWS_TYPE == 'centauro_claws_palm_separated'}">
+        <!--     HARIA_HIL FINGERTIP LINKS     -->
+        <link name="dagana_${arm_num}_rightfingertip" />
+        <joint name="dagana_${arm_num}_rightfinger_joint" type="fixed">
+            <parent link="dagana_${arm_num}_top_link" />
+            <child link="dagana_${arm_num}_rightfingertip" />
+            <origin xyz="0 0.0075 0.208" rpy="0 0 0"/>
+        </joint>
+
+        <link name="dagana_${arm_num}_leftfingertip"/>
+        <joint name="dagana_${arm_num}_leftfinger_joint" type="fixed">
+            <parent link="dagana_${arm_num}_claw_B"/>
+            <child link="dagana_${arm_num}_leftfingertip"/>
+            <origin rpy="0 0 0" xyz="0.0 0.15775 0.0355"/>
+        </joint>
+    </xacro:if>
+
     </xacro:macro>
     <!-- /macro ee -->
 

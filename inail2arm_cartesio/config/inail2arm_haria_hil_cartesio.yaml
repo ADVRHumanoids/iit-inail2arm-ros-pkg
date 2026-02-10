@@ -1,0 +1,51 @@
+solver_options:
+    regularization: 1e-4
+    back_end: qpoases
+
+stack:
+    - [ArmCartesian]
+    - [ArmPostural]
+
+    
+constraints: [JointLimits, VelocityLimits]
+
+ArmCartesian:
+    name: "ArmCartesian"
+    type: Cartesian
+    distal_link: dagana_1_rightfingertip
+    base_link: base_link
+    lambda: 0.1
+    active: true
+
+ArmCartesianLinear:
+    type: "Subtask"
+    task: "ArmCartesian"
+    #type: "Cartesian"
+    distal_link: dagana_1_rightfingertip
+    base_link: base_link
+    lambda: 0.1
+    active: true
+    indices: [0, 1, 2]
+    
+ArmCartesianAngular:
+    type: "Subtask"
+    task: "ArmCartesian"
+    #type: "Cartesian"
+    distal_link: dagana_1_rightfingertip
+    base_link: base_link
+    lambda: 0.1
+    active: true
+    indices: [3, 4, 5]
+
+ArmPostural:
+    name: "ArmPostural"
+    type: Postural
+    lambda: 0.01
+    weight: 0.001
+    active: false
+
+JointLimits:
+    type: JointLimits
+
+VelocityLimits:
+    type: VelocityLimits

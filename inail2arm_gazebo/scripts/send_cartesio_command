@@ -8,8 +8,8 @@ class GripperPoseCommandPublisher(Node):
 
     def __init__(self):
         super().__init__('gripper_pose_command_publisher')
-        # self.publisher_ = self.create_publisher(PoseStamped, '/cartesian/ArmCartesian/reference', 10)
-        self.publisher_ = self.create_publisher(JointState, '/cartesian/ArmPostural/reference', 10)
+        self.publisher_ = self.create_publisher(PoseStamped, '/cartesian/ArmCartesian/reference', 10)
+        # self.publisher_ = self.create_publisher(JointState, '/cartesian/ArmPostural/reference', 10)
         timer_period = 1 / 100  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.get_logger().info('GripperPoseCommandPublisher node has been started.')
@@ -22,32 +22,32 @@ class GripperPoseCommandPublisher(Node):
         }
 
     def timer_callback(self):
-        # msg = PoseStamped()
-        # msg.header.stamp = Clock().now().to_msg()  # correct ROS time
-        # msg.header.frame_id = 'base_link'
-        # msg.pose.position.x = 0.2
-        # msg.pose.position.y = 0.1
-        # msg.pose.position.z = 0.7
-        # msg.pose.orientation.x = 0.0
-        # msg.pose.orientation.y = 0.0
-        # msg.pose.orientation.z = 0.707
-        # msg.pose.orientation.w = 0.707
-        # msg.pose.position.x = 0.0
-        # msg.pose.position.y = 0.5
-        # msg.pose.position.z = 0.4
-        # msg.pose.orientation.x = 0.0
-        # msg.pose.orientation.y = 0.0
-        # msg.pose.orientation.z = 0.0
-        # msg.pose.orientation.w = 1.0
-
-
-        msg = JointState()
-        msg.header.stamp = Clock().now().to_msg()
+        msg = PoseStamped()
+        msg.header.stamp = Clock().now().to_msg()  # correct ROS time
         msg.header.frame_id = 'base_link'
-        msg.name = self.homing_ee_down['joint_names']
-        msg.position = self.homing_ee_down['joint_positions']
-        msg.velocity = []
-        msg.effort = []
+        msg.pose.position.x = 0.2
+        msg.pose.position.y = 0.1
+        msg.pose.position.z = 0.7
+        msg.pose.orientation.x = 0.0
+        msg.pose.orientation.y = 0.0
+        msg.pose.orientation.z = 0.707
+        msg.pose.orientation.w = 0.707
+        msg.pose.position.x = 0.0
+        msg.pose.position.y = 0.5
+        msg.pose.position.z = 0.4
+        msg.pose.orientation.x = 0.0
+        msg.pose.orientation.y = 0.0
+        msg.pose.orientation.z = 0.0
+        msg.pose.orientation.w = 1.0
+
+
+        # msg = JointState()
+        # msg.header.stamp = Clock().now().to_msg()
+        # msg.header.frame_id = 'base_link'
+        # msg.name = self.homing_ee_down['joint_names']
+        # msg.position = self.homing_ee_down['joint_positions']
+        # msg.velocity = []
+        # msg.effort = []
             
 
         self.publisher_.publish(msg)

@@ -1,15 +1,6 @@
 #!/usr/bin/env python3
 """
-ROS2 Joystick Teleop Example - Official Pattern
-
-This demonstrates the proper ROS2 pattern for joystick-controlled robot teleoperation.
-Follows the standard ROS2 pattern used by teleop_twist_joy package.
-
-Key principles:
-1. Subscribe to /joy topic (from joy_node)
-2. Map joystick axes/buttons to robot commands
-3. Publish commands based on joystick state
-4. Use parameters for configurability
+ROS2 Joystick Teleop Example 
 
 Dependencies:
   sudo apt install ros-<distro>-joy ros-<distro>-joy-linux
