@@ -4,7 +4,7 @@
     <xacro:include filename="$(find inail2arm_urdf)/config/inail2arm.urdf.xacro" />
     
     <group name="arm">
-        <chain base_link="base_link" tip_link="dagana_rightfingertip"/>
+        <chain base_link="base_link" tip_link="dagana_1_rightfingertip"/>
     </group>
     
     <xacro:if value="${END_EFFECTOR == 'dagana' or END_EFFECTOR == 'dagana_fixed'}">
